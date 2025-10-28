@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lorry Logistics Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* For Webkit-based browsers (Chrome, Safari) */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1f2937; /* bg-gray-800 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4b5563; /* bg-gray-600 */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #6b7280; /* bg-gray-500 */
+      }
+      
+      @media print {
+        @page {
+          size: A4;
+          margin: 1.5cm;
+        }
+
+        body {
+          background: #fff !important;
+          color: #000 !important;
+          font-size: 9pt;
+        }
+
+        /* Hide all interactive and non-essential UI elements */
+        .no-print, 
+        button, 
+        input[type="range"],
+        header p,
+        header .flex > svg /* Lorry icon in header */
+        {
+          display: none !important;
+        }
+        
+        main {
+          margin-top: -2rem !important;
+        }
+
+        /* Reset layout to single column */
+        main .grid {
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem !important;
+        }
+
+        /* Reset panel styles */
+        div[class*="bg-gray-800"] {
+          background: #fff !important;
+          border: 1px solid #ddd !important;
+          box-shadow: none !important;
+          padding: 1rem !important;
+        }
+
+        /* Ensure all text is black and readable */
+        .text-gray-100, .text-gray-300, .text-gray-400, .text-teal-300, .text-white, .text-red-400, .text-red-500, .text-green-400, .text-teal-400, .text-orange-400 {
+          color: #000 !important;
+        }
+        .text-yellow-300, .text-red-400 {
+          color: #000 !important;
+        }
+        
+        /* Reset header style */
+        header h1 {
+          background: none !important;
+          -webkit-text-fill-color: initial !important;
+          font-size: 22pt !important;
+          color: #000 !important;
+        }
+
+        /* Make results values stand out */
+        .text-7xl {
+          font-size: 4rem !important;
+        }
+        
+        div[class*="bg-gray-900"] {
+          background: #f8f8f8 !important;
+        }
+
+        /* Gantt Chart specific styles */
+        .gantt-chart-wrapper {
+          page-break-before: always; /* Start chart on a new page */
+          overflow: visible !important;
+        }
+        
+        .gantt-chart-wrapper h2 {
+           font-size: 14pt !important;
+        }
+
+        .gantt-chart-bar {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          border: 1px solid #666 !important;
+        }
+        
+        /* Use !important to override inline styles from React */
+        .bg-yellow-500\/70 { background-color: #fde047 !important; }
+        .bg-blue-500\/70 { background-color: #60a5fa !important; }
+        .bg-red-500\/70 { background-color: #f87171 !important; }
+        
+        .border-gray-700 { border-color: #ccc !important; }
+        .border-gray-600 { border-color: #999 !important; }
+        .border-red-500 { border-color: #000 !important; border-width: 1px !important; }
+        
+        /* Show values from input sliders clearly */
+        .flex.justify-between.items-baseline {
+          border-bottom: 1px dotted #ccc;
+          padding-bottom: 0.5rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        .prose {
+          border-top: 1px solid #ccc;
+          padding-top: 1rem;
+          margin-top: 1rem;
+        }
+        
+        div[class*="bg-yellow-900/40"] {
+          background: #fff3cd !important;
+          border: 1px solid #ffeeba !important;
+          color: #856404 !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-900 text-gray-100 antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

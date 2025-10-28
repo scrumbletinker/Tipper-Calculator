@@ -1,0 +1,5 @@
+{
+  "name": "Planing Lorry Logistics Calculator",
+  "description": "A web-based calculator to determine the number of lorries required to move materials, with AI-powered insights for logistics planning.",
+  "requestFramePermissions": []
+}
